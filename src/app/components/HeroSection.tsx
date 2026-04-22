@@ -77,7 +77,7 @@ export function HeroSection() {
           transition={{ duration: 0.7, delay: 0.45, ease: "easeOut" }}
         >
           <motion.a
-            href={`${import.meta.env.BASE_URL}cv/CV.pdf`}
+            href={`${import.meta.env.BASE_URL}cv/hasan-cv.pdf`}
             download
             className="group font-grotesk w-full sm:w-auto px-7 py-3.5 bg-white text-[#0A0F1C] rounded-lg font-semibold text-sm flex items-center justify-center gap-2 transition-colors hover:bg-slate-100"
             whileHover={{ scale: 1.02 }}
