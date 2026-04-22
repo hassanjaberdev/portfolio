@@ -17,20 +17,70 @@ type Repo = {
   private: boolean;
 };
 
+type PortfolioRepo = Repo & {
+  image: string | null;
+};
+
 function extractFirstUrl(text?: string | null): string | null {
   if (!text) return null;
-  const match = text.match(/https?:\/\/[^\s]+/);
+  const match = text.match(/https?:\/\/[^\s)]+/);
   return match ? match[0] : null;
 }
 
-function getRepoImage(repoName: string) {
+function getFallbackImage(repoName: string) {
   return `https://source.unsplash.com/800x600/?technology,code,${encodeURIComponent(
     repoName
   )}`;
 }
 
+function normalizeReadmeImageUrl(
+  imageUrl: string,
+  username: string,
+  repo: string
+) {
+  if (!imageUrl) return null;
+
+  // Absolute URL
+  if (imageUrl.startsWith("http://") || imageUrl.startsWith("https://")) {
+    return imageUrl;
+  }
+
+  // Relative paths from README -> convert to raw GitHub URL
+  const cleaned = imageUrl.replace(/^\.?\//, "");
+  return `https://raw.githubusercontent.com/${username}/${repo}/main/${cleaned}`;
+}
+
+async function getReadmeImage(username: string, repo: string) {
+  try {
+    const res = await fetch(
+      `https://raw.githubusercontent.com/${username}/${repo}/main/README.md`
+    );
+
+    if (!res.ok) return null;
+
+    const text = await res.text();
+
+    // أول صورة markdown: ![alt](url)
+    const markdownMatch = text.match(/!\[.*?\]\((.*?)\)/);
+    if (markdownMatch?.[1]) {
+      return normalizeReadmeImageUrl(markdownMatch[1], username, repo);
+    }
+
+    // أو أول صورة HTML: <img src="...">
+    const htmlMatch = text.match(/<img[^>]+src=["']([^"']+)["']/i);
+    if (htmlMatch?.[1]) {
+      return normalizeReadmeImageUrl(htmlMatch[1], username, repo);
+    }
+
+    return null;
+  } catch (error) {
+    console.error(`Failed to fetch README image for ${repo}:`, error);
+    return null;
+  }
+}
+
 export function ProjectsSection() {
-  const [repos, setRepos] = useState<Repo[]>([]);
+  const [repos, setRepos] = useState<PortfolioRepo[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -40,8 +90,10 @@ export function ProjectsSection() {
         setLoading(true);
         setError("");
 
+        const username = "hassanjaberdev";
+
         const res = await fetch(
-          "https://api.github.com/users/hassanjaberdev/repos?per_page=100&sort=updated",
+          `https://api.github.com/users/${username}/repos?per_page=100&sort=updated`,
           {
             headers: {
               Accept: "application/vnd.github+json",
@@ -63,7 +115,18 @@ export function ProjectsSection() {
               new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime()
           );
 
-        setRepos(filtered);
+        const reposWithImages: PortfolioRepo[] = await Promise.all(
+          filtered.map(async (repo) => {
+            const image = await getReadmeImage(username, repo.name);
+
+            return {
+              ...repo,
+              image,
+            };
+          })
+        );
+
+        setRepos(reposWithImages);
       } catch (err) {
         console.error(err);
         setError("Failed to load projects.");
@@ -97,8 +160,8 @@ export function ProjectsSection() {
         {!loading && !error && repos.length === 0 && (
           <p className="font-grotesk text-slate-400 text-center">
             No projects found yet. Add the topic{" "}
-            <span className="text-cyan-400">add-to-portfolio</span> to your GitHub
-            repositories.
+            <span className="text-cyan-400">add-to-portfolio</span> to your
+            GitHub repositories.
           </p>
         )}
 
@@ -106,7 +169,8 @@ export function ProjectsSection() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {repos.map((repo, i) => {
               const visibleTopics =
-                repo.topics?.filter((topic) => topic !== "add-to-portfolio") || [];
+                repo.topics?.filter((topic) => topic !== "add-to-portfolio") ||
+                [];
 
               const liveUrl = repo.homepage || extractFirstUrl(repo.description);
 
@@ -123,7 +187,7 @@ export function ProjectsSection() {
                 >
                   <div className="relative aspect-[16/9] overflow-hidden bg-slate-800/40">
                     <ImageWithFallback
-                      src={getRepoImage(repo.name)}
+                      src={repo.image || getFallbackImage(repo.name)}
                       alt={`Cover image for ${repo.name}`}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                     />
