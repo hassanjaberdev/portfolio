@@ -18,7 +18,7 @@ export function HeroSection() {
             <div className="absolute -inset-1.5 rounded-full border border-cyan-400/25" />
             <div className="absolute -inset-3 rounded-full border border-slate-700/40" />
             <ImageWithFallback
-              src="/images/me.jpg"
+              src={`${import.meta.env.BASE_URL}images/me.jpg`}
               alt="Hasan Jaber"
               className="relative w-36 h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 object-cover object-[center_20%] rounded-full border border-slate-700/60 shadow-[0_0_30px_rgba(0,255,255,0.2)]"
               style={{ boxShadow: "0 8px 40px rgba(0, 0, 0, 0.5)" }}
@@ -77,7 +77,7 @@ export function HeroSection() {
           transition={{ duration: 0.7, delay: 0.45, ease: "easeOut" }}
         >
           <motion.a
-            href="/cv/cv.pdf"
+            href={`${import.meta.env.BASE_URL}cv/cv.pdf`}
             download
             className="group font-grotesk w-full sm:w-auto px-7 py-3.5 bg-white text-[#0A0F1C] rounded-lg font-semibold text-sm flex items-center justify-center gap-2 transition-colors hover:bg-slate-100"
             whileHover={{ scale: 1.02 }}
