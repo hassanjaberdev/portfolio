@@ -1,0 +1,9 @@
+@import 'tailwindcss' source(none);
+@source '../**/*.{js,ts,jsx,tsx}';
+
+@import 'tw-animate-css';
+
+@theme {
+  --font-orbitron: 'Orbitron', sans-serif;
+  --font-grotesk: 'Space Grotesk', sans-serif;
+}
