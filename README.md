@@ -8,11 +8,6 @@ Built with a focus on clean UI, smooth animations, and real-world usability.
 🔗 **Live Demo:**
 https://hassanjaberdev.github.io/portfolio/
 
----
-
-## 📸 Preview
-
-![preview](public/images/preview-img.png)
 
 ---
 
