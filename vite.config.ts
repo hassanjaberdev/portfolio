@@ -18,7 +18,7 @@ function figmaAssetResolver() {
 
 export default defineConfig({
   // أضف هذا السطر هنا (استخدم اسم المستودع الخاص بك)
-  base: '/Freelance-Performance-Dashboard/', 
+  base: '/portfolio/', 
   plugins: [
     figmaAssetResolver(),
     react(),

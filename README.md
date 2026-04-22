@@ -1,11 +1,11 @@
-![preview](https://raw.githubusercontent.com/hassanjaberdev/Freelance-Performance-Dashboard/main/images/preview.png)
+![preview](https://raw.githubusercontent.com/hassanjaberdev/portfolio/main/public/images/preview.png)
 
 # 📊 Freelance Performance Dashboard
 
 A modern dashboard designed to help freelancers track their performance, manage productivity, and visualize key metrics in a clean and intuitive interface.
 
 ## 🚀 Live Demo
-👉 https://hassanjaberdev.github.io/Freelance-Performance-Dashboard/
+👉 https://hassanjaberdev.github.io/portfolio/
 
 ---
 
