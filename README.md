@@ -1,75 +1,119 @@
-![preview](https://raw.githubusercontent.com/hassanjaberdev/portfolio/main/public/images/preview.png)
+![preview](https://raw.githubusercontent.com/hassanjaberdev/portfolio/main/public/images/preview-img.png)
 
-# 📊 Freelance Performance Dashboard
+# 🚀 Hasan Jaber Portfolio
 
-A modern dashboard designed to help freelancers track their performance, manage productivity, and visualize key metrics in a clean and intuitive interface.
+A modern, high-performance portfolio website showcasing my work as a Front-End Developer.
+Built with a focus on clean UI, smooth animations, and real-world usability.
 
-## 🚀 Live Demo
-👉 https://hassanjaberdev.github.io/portfolio/
-
----
-
-## 🧠 About The Project
-
-Freelance Performance Dashboard is a front-end project built to simulate a real-world productivity and analytics system for freelancers.
-
-It provides a structured view of performance metrics, helping users monitor their work progress, track goals, and gain insights through a visually appealing interface.
+🔗 **Live Demo:**
+https://hassanjaberdev.github.io/portfolio/
 
 ---
 
-## 🛠 Tech Stack
+## 📸 Preview
 
-- HTML5  
-- CSS3  
-- JavaScript (ES6)  
-- Responsive Design  
-- Modern UI Techniques  
+![preview](public/images/preview-img.png)
 
 ---
 
-## ✨ Key Features
+## ✨ Features
 
-- 📈 Performance tracking dashboard  
-- 🧩 Clean and structured UI layout  
-- 📱 Fully responsive design (mobile-first)  
-- ⚡ Lightweight and fast  
-- 🎯 Focus on usability and clarity  
-- 🌙 Dark-themed modern interface  
-
----
-
-## 📊 What This Project Demonstrates
-
-- Building real-world dashboard layouts  
-- UI/UX thinking for data visualization  
-- Clean and maintainable front-end structure  
-- Component-like layout organization  
-- Professional design consistency  
+* 🎯 Clean and modern UI design
+* 📊 Freelance performance dashboard integration
+* 💼 Projects showcase section
+* 📄 Downloadable CV
+* 🌙 Dark mode support
+* ⚡ Smooth animations with Framer Motion
+* 📱 Fully responsive across all devices
 
 ---
 
-## 📌 Highlights
+## 🛠️ Tech Stack
 
-- Designed with scalability in mind  
-- Focused on user experience and readability  
-- Inspired by real SaaS dashboard products  
+* **React**
+* **TypeScript**
+* **Vite**
+* **Tailwind CSS**
+* **Framer Motion**
 
 ---
 
-## 🔗 Links
+## 📁 Project Structure
 
-- 🌐 Live Demo: https://hassanjaberdev.github.io/Freelance-Performance-Dashboard/  
-- 💻 Source Code: https://github.com/hassanjaberdev/Freelance-Performance-Dashboard  
+```
+src/
+ ├── components/
+ ├── pages/
+ ├── assets/
+
+public/
+ ├── images/
+ └── cv/
+```
+
+---
+
+## ⚙️ Getting Started
+
+### 1. Clone the repository
+
+```
+git clone https://github.com/hassanjaberdev/portfolio.git
+cd portfolio
+```
+
+### 2. Install dependencies
+
+```
+npm install
+```
+
+### 3. Run the development server
+
+```
+npm run dev
+```
+
+---
+
+## 🏗️ Build for production
+
+```
+npm run build
+```
+
+---
+
+## 🌍 Deployment
+
+This project is deployed using **GitHub Pages** via **GitHub Actions**.
+
+---
+
+## 📄 Resume
+
+👉 [Download CV](https://hassanjaberdev.github.io/portfolio/cv/hasan-cv.pdf)
+
+---
+
+## 🎯 Highlights
+
+* Built with scalable front-end architecture
+* Focus on performance and clean code
+* Designed for real client use cases
 
 ---
 
 ## 👨‍💻 Author
 
-**Hasan Jaber**  
-Front-End Developer  
+Hasan Jaber
+Front-End Developer
+
+* GitHub: https://github.com/hassanjaberdev
+* LinkedIn: (add your link here)
 
 ---
 
-## ⭐ Notes
+## ⭐ Support
 
-This project is part of my portfolio and reflects my approach to building modern, responsive, and user-focused web interfaces.
+If you like this project, consider giving it a ⭐ on GitHub!
